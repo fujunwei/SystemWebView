@@ -56,8 +56,12 @@ public class MainActivity extends AppCompatActivity {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     if (keyCode == KeyEvent.KEYCODE_BACK) {  //表示按返回键
+                        if(mWebview.canGoBack()) {
+                            mWebview.goBack();
+                            return true;    //已处理
+                        }
                         Log.d("fujunwei", "========setKeyListener");
-                        return true;    //已处理
+                        return false;
                     }
                 }
                 return false;
